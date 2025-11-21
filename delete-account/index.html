@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TCG Base – Konto löschen / Delete your account</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card-bg: #121829;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --text: #f7fafc;
+      --muted: #a0aec0;
+      --danger: #f56565;
+      --border: #2d3748;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1a365d, #020305 60%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #111827, #020617);
+      border-radius: 24px;
+      padding: 24px 20px 20px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+    }
+
+    @media (min-width: 720px) {
+      .card {
+        padding: 32px 32px 28px;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(79, 209, 197, 0.8);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.7rem;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .lang-switch {
+      margin-top: 18px;
+      display: inline-flex;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+    }
+
+    .lang-pill {
+      border-radius: 999px;
+      padding: 4px 10px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .lang-pill.active {
+      background: var(--accent);
+      color: #0b1120;
+    }
+
+    .content {
+      margin-top: 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .section {
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(61, 72, 96, 0.9);
+    }
+
+    @media (min-width: 720px) {
+      .section {
+        padding: 16px 18px 14px;
+      }
+    }
+
+    .section h2 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .section p {
+      margin: 4px 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    ul {
+      margin: 6px 0 4px 1.1rem;
+      padding: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+      background: rgba(15, 23, 42, 0.95);
+      padding: 2px 5px;
+      border-radius: 6px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .danger {
+      color: var(--danger);
+      font-weight: 500;
+    }
+
+    .contact-box {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .footnote {
+      margin-top: 14px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        TCG Base &nbsp;•&nbsp; Account Deletion
+      </div>
+
+      <h1>TCG Base – Konto löschen</h1>
+      <p class="subtitle">
+        Auf dieser Seite erfährst du, wie du dein TCG-Base-Konto und die dazugehörigen
+        Online-Daten löschen lassen kannst.
+      </p>
+
+      <div class="lang-switch" aria-label="Language switch">
+        <button class="lang-pill active" data-lang="de">DE</button>
+        <button class="lang-pill" data-lang="en">EN</button>
+      </div>
+
+      <!-- Deutsch -->
+      <div class="content" id="content-de">
+        <article class="section">
+          <h2>Was wird bei einer Kontolöschung gelöscht?</h2>
+          <p>
+            Wenn du die Löschung deines Kontos beantragst, löschen wir alle
+            personenbezogenen Online-Daten, die mit deinem TCG-Base-Konto in
+            unserer Datenbank (Supabase) verknüpft sind, z.&nbsp;B.:
+          </p>
+          <ul>
+            <li>deine registrierte E-Mail-Adresse und dein Login-Konto,</li>
+            <li>dein öffentliches Profil (Benutzername, Avatar etc.),</li>
+            <li>Cloud-Backups deiner Sammlung oder Decks (falls aktiviert),</li>
+            <li>Online-Matchdaten und Event-Daten, die deinem Konto zugeordnet sind.</li>
+          </ul>
+          <p>
+            <span class="highlight">Lokale Daten auf deinem Gerät</span> –
+            also Daten, die nur in der App gespeichert sind – werden durch das
+            Löschen deines Kontos <strong>nicht automatisch</strong> entfernt.
+            Diese kannst du jederzeit löschen, indem du TCG Base deinstallierst
+            oder in den App-Einstellungen deines Geräts den lokalen Speicher
+            zurücksetzt.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>So forderst du die Löschung deines Kontos an</h2>
+          <p>
+            Aktuell erfolgt die Kontolöschung über eine manuelle Anfrage per
+            E-Mail. Bitte gehe wie folgt vor:
+          </p>
+          <ul>
+            <li>
+              Sende eine E-Mail von der
+              <span class="highlight">E-Mail-Adresse, mit der du dich in TCG Base registriert hast</span>,
+              an:
+            </li>
+          </ul>
+
+          <div class="contact-box">
+            <div><strong>E-Mail:</strong></div>
+            <div>
+              <a href="mailto:schattenwolf-studio@gmx.de?subject=TCG%20Base%20-%20Konto%20l%C3%B6schen">
+                schattenwolf-studio@gmx.de
+              </a>
+            </div>
+          </div>
+
+          <p>Bitte gib in deiner Nachricht Folgendes an:</p>
+          <ul>
+            <li><strong>Betreff:</strong> <code>TCG Base – Konto löschen</code></li>
+            <li>Deine registrierte E-Mail-Adresse (falls du mehrere hast)</li>
+            <li>Optional: deine TCG-Base-User-ID, falls dir diese bekannt ist</li>
+          </ul>
+
+          <p>
+            Nach Eingang deiner Anfrage prüfen wir die Daten und löschen dein
+            Konto sowie alle zugehörigen Online-Daten so schnell wie möglich –
+            in der Regel innerhalb von <strong>30 Tagen</strong>, häufig deutlich schneller.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>Kann ich meine Daten ohne Kontolöschung entfernen lassen?</h2>
+          <p>
+            Momentan bieten wir das Entfernen einzelner Datentypen (z.&nbsp;B.
+            nur Match-Historie oder nur Cloud-Backups) noch nicht getrennt von
+            einer vollständigen Kontolöschung an.
+          </p>
+          <p>
+            Wenn du spezielle Wünsche hast (z.&nbsp;B. Löschung bestimmter
+            Turnierdaten), kannst du dies in deiner E-Mail erwähnen – wir prüfen
+            dann im Einzelfall, was möglich ist.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>Deine Datenschutzrechte (DSGVO)</h2>
+          <p>
+            Wenn du in der EU / im EWR lebst, hast du nach der
+            Datenschutz-Grundverordnung (DSGVO) unter anderem das Recht auf:
+          </p>
+          <ul>
+            <li>Auskunft über die von uns gespeicherten personenbezogenen Daten,</li>
+            <li>Berichtigung unrichtiger Daten,</li>
+            <li>Löschung („Recht auf Vergessenwerden“),</li>
+            <li>Einschränkung der Verarbeitung und Widerspruch gegen bestimmte Verarbeitungen.</li>
+          </ul>
+          <p>
+            Du kannst diese Rechte jederzeit über dieselbe Kontaktadresse geltend machen:
+            <a href="mailto:schattenwolf-studio@gmx.de">schattenwolf-studio@gmx.de</a>.
+          </p>
+        </article>
+
+        <p class="footnote">
+          Letzte Aktualisierung: <strong>November 2025</strong>. Diese Seite kann in Zukunft
+          angepasst werden, wenn TCG Base neue Funktionen (z.&nbsp;B. In-App-Löschung oder
+          zusätzliche Login-Methoden) erhält.
+        </p>
+      </div>
+
+      <!-- English -->
+      <div class="content" id="content-en" style="display:none;">
+        <article class="section">
+          <h2>What is deleted when I delete my account?</h2>
+          <p>
+            When you request deletion of your account, we delete all personal
+            online data linked to your TCG Base account in our database
+            (Supabase), including:
+          </p>
+          <ul>
+            <li>Your registered e-mail address and login account,</li>
+            <li>Your public profile (username, avatar, etc.),</li>
+            <li>Cloud backups of your collection or decks (if enabled),</li>
+            <li>Online match data and event data associated with your account.</li>
+          </ul>
+          <p>
+            <span class="highlight">Local data on your device</span> – data stored only inside
+            the app – is <strong>not removed automatically</strong> when we delete
+            your account. You can remove this data at any time by uninstalling
+            TCG Base or clearing the app’s local storage in your device settings.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>How to request deletion of your account</h2>
+          <p>
+            Account deletion is currently handled manually via e-mail. Please follow
+            these steps:
+          </p>
+          <ul>
+            <li>
+              Send an e-mail from the
+              <span class="highlight">same e-mail address you used to register in TCG Base</span>
+              to:
+            </li>
+          </ul>
+
+          <div class="contact-box">
+            <div><strong>E-mail:</strong></div>
+            <div>
+              <a href="mailto:schattenwolf-studio@gmx.de?subject=TCG%20Base%20-%20Delete%20my%20account">
+                schattenwolf-studio@gmx.de
+              </a>
+            </div>
+          </div>
+
+          <p>Please include the following information:</p>
+          <ul>
+            <li><strong>Subject:</strong> <code>TCG Base – Delete my account</code></li>
+            <li>Your registered e-mail address (if you have several)</li>
+            <li>Optionally: your TCG Base user ID, if you know it</li>
+          </ul>
+
+          <p>
+            Once we receive your request, we will verify your details and delete
+            your account and all related online data as soon as possible – usually
+            within <strong>30 days</strong>, often much faster.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>Can I remove data without deleting my account?</h2>
+          <p>
+            At the moment we do not offer separate removal of specific data types
+            (for example, match history only or cloud backups only) independently
+            from full account deletion.
+          </p>
+          <p>
+            If you have a specific request (e.g. deletion of certain tournament
+            records), feel free to describe it in your e-mail and we will check
+            what is possible on a case-by-case basis.
+          </p>
+        </article>
+
+        <article class="section">
+          <h2>Your privacy rights (GDPR)</h2>
+          <p>
+            If you live in the EU / EEA, you have certain rights under the GDPR,
+            including:
+          </p>
+          <ul>
+            <li>Access to the personal data we store about you,</li>
+            <li>Correction of inaccurate data,</li>
+            <li>Erasure of your data (“right to be forgotten”),</li>
+            <li>Restriction of processing and the right to object to certain processing activities.</li>
+          </ul>
+          <p>
+            You can exercise these rights at any time using the same contact
+            address:
+            <a href="mailto:schattenwolf-studio@gmx.de">schattenwolf-studio@gmx.de</a>.
+          </p>
+        </article>
+
+        <p class="footnote">
+          Last updated: <strong>November 2025</strong>. This page may be updated in
+          the future as TCG Base receives new features (such as in-app deletion or
+          additional login methods).
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const pills = document.querySelectorAll('.lang-pill');
+    const contentDe = document.getElementById('content-de');
+    const contentEn = document.getElementById('content-en');
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        pills.forEach((p) => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        const lang = pill.dataset.lang;
+        if (lang === 'de') {
+          contentDe.style.display = '';
+          contentEn.style.display = 'none';
+        } else {
+          contentDe.style.display = 'none';
+          contentEn.style.display = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
